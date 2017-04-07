@@ -1,0 +1,8 @@
+#!/usr/bin/env Rscript
+## summary
+## Mac Radigan
+
+  d.df <- read.table(file='stdin', sep='\t', header=TRUE)
+  summary(d.df)
+
+## *EOF

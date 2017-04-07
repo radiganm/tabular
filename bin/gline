@@ -1,0 +1,36 @@
+#!/usr/bin/perl -w
+## gline
+## Mac Radigan
+
+  use strict;
+  use warnings;
+  use Getopt::Long qw(GetOptions);
+  
+  my $graphical;
+  my $text;
+  GetOptions(
+    'graphical' => \$graphical,
+    'text' => \$text,
+    ) or die "Usage: $0 --graphical --text\n";
+ 
+   open(PLOT, "|gnuplot -persist") or die "failed: $!\n";
+   print PLOT <<"EOD";
+   set datafile separator ' '
+   set datafile missing '-'
+   set autoscale
+   set auto x
+   set auto y
+   set xtic auto
+   set ytic auto
+EOD
+   print PLOT "set terminal dumb\n" if !$graphical;
+   print PLOT "plot '-' u 1:2 w lines\n";
+   while(my $line = <STDIN>)
+   {
+     print PLOT $line;
+     print $line if $text;
+   }
+   print PLOT "e\n";
+   close(PLOT);
+
+## *EOF*

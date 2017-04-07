@@ -1,0 +1,9 @@
+#!/usr/bin/env Rscript
+## stem
+## Mac Radigan
+
+  d.df <- read.table(file='stdin', sep='\t', header=TRUE)
+  d <- as.matrix(d.df[,-1])
+  stem(d)
+
+## *EOF

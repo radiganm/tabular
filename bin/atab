@@ -1,0 +1,10 @@
+#!/usr/bin/env Rscript
+## atab
+## Mac Radigan
+
+  require('ascii', quiet=TRUE)
+
+  d.df <- read.table(file='stdin', sep='\t', header=TRUE)
+  ascii(d.df)
+
+## *EOF

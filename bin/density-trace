@@ -1,0 +1,11 @@
+#!/usr/bin/env Rscript
+## density-trace
+## Mac Radigan
+
+  require('txtplot', quiet=TRUE)
+
+  d.df <- read.table(file='stdin', sep='\t', header=TRUE)
+  d <- as.matrix(d.df[,-1])
+  txtdensity(d)
+
+## *EOF
